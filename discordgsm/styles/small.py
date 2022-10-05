@@ -70,7 +70,7 @@ class Small(Style):
         if self.server.game_id == 'discord':
             embed.add_field(name='Guild ID', value=f'`{self.server.address}`', inline=True)
         elif game_port is None or game_port == int(self.server.query_port):
-            embed.add_field(name='Address:Port', value=f'`{self.server.address}:{self.server.query_port}`', inline=True)
+            embed.add_field(name='Addresse', value=f'`{self.server.address}:{self.server.query_port}`', inline=True)
         else:
             embed.add_field(name='Address:Port (Query)', value=f'`{self.server.address}:{game_port} ({self.server.query_port})`', inline=True)
 
