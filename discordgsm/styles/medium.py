@@ -67,7 +67,7 @@ class Medium(Style):
         bots = len(self.server.result['bots'])
 
         if self.server.status:
-            color = Color.from_rgb(88, 101, 242)
+            color = Color.from_rgb(56, 182, 255)
         else:
             color = Color.from_rgb(32, 34, 37)  # dark
 
