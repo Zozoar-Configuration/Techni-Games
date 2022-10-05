@@ -75,24 +75,24 @@ class Medium(Style):
         description = self.server.style_data.get('description', '').strip()
 
         embed = Embed(title=title, description=None if not description else description, color=color)
-        embed.add_field(name='Status', value=f"{emoji} **{self.server.status and 'Online' or 'Offline'}**", inline=True)
+        embed.add_field(name='Statut', value=f"{emoji} **{self.server.status and 'Online' or 'Offline'}**", inline=True)
 
         game_port = gamedig.game_port(self.server.result)
 
         if self.server.game_id == 'discord':
-            embed.add_field(name='Guild ID', value=f'`{self.server.address}`', inline=True)
+            embed.add_field(name='Discord ID', value=f'`{self.server.address}`', inline=True)
         elif game_port is None or game_port == int(self.server.query_port):
-            embed.add_field(name='Address:Port', value=f'`{self.server.address}:{self.server.query_port}`', inline=True)
+            embed.add_field(name='Addresse', value=f'`{self.server.address}:{self.server.query_port}`', inline=True)
         else:
-            embed.add_field(name='Address:Port (Query)', value=f'`{self.server.address}:{game_port} ({self.server.query_port})`', inline=True)
+            embed.add_field(name='Addresse', value=f'`{self.server.address}:{game_port} ({self.server.query_port})`', inline=True)
 
         flag_emoji = ('country' in self.server.style_data) and (':flag_' + self.server.style_data['country'].lower() + f': {self.server.style_data["country"]}') or ':united_nations: Unknown'
-        embed.add_field(name='Country', value=flag_emoji, inline=True)
+        embed.add_field(name='Naionalité', value=flag_emoji, inline=True)
 
-        embed.add_field(name='Game', value=self.server.style_data.get('fullname', self.server.game_id), inline=True)
+        embed.add_field(name='Jeux', value=self.server.style_data.get('fullname', self.server.game_id), inline=True)
 
         maps = (self.server.result['map'] and self.server.result['map'].strip()) and self.server.result['map'] or '-'
-        embed.add_field(name='Current Map', value=maps, inline=True)
+        embed.add_field(name='Map', value=maps, inline=True)
 
         if self.server.status:
             players_string = str(players)  # example: 20
@@ -123,7 +123,7 @@ class Medium(Style):
             advertisement = '🎉 Happy New Year!'
 
         last_update = datetime.now(tz=ZoneInfo(self.server.style_data.get('timezone', 'Etc/UTC'))).strftime('%Y-%m-%d %I:%M:%S%p')
-        icon_url = 'https://avatars.githubusercontent.com/u/61296017'
-        embed.set_footer(text=f'DiscordGSM {__version__} | {advertisement} | Last update: {last_update}', icon_url=icon_url)
+        icon_url = 'https://imgur.com/YPqnAUI.png'
+        embed.set_footer(text=f'Techni-Games {__version__} | {advertisement} | Last update: {last_update}', icon_url=icon_url)
 
         return embed
